@@ -283,9 +283,9 @@
         label: "{{ item.name }}"
       ignore_errors: yes
 
-    - name: Pausing for 30 seconds
+    - name: Pausing for 120 seconds
       pause:
-        seconds: 30
+        seconds: 120
 
     - name: Get SE group list
       vmware.alb.avi_api_session:
