@@ -95,6 +95,7 @@
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
         http_method: get
+        tenant: "*"
         timeout: 300
         path: virtualservice
       register: virtualserviceResults
@@ -104,6 +105,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: '{{ lookup("vmware.alb.avi", avi_credentials=avi_credentials, obj_uuid=item.tenant_ref | basename, obj_type="tenant").name }}'
         http_method: "delete"
         path: '{{"virtualservice/" + item.uuid }}'
       loop: "{{ virtualserviceResults.obj.results }}"
@@ -117,6 +119,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: '{{ lookup("vmware.alb.avi", avi_credentials=avi_credentials, obj_uuid=item.tenant_ref | basename, obj_type="tenant").name }}'
         http_method: "delete"
         path: '{{"virtualservice/" + item.uuid }}'
       loop: "{{ virtualserviceResults.obj.results }}"
@@ -130,6 +133,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: '{{ lookup("vmware.alb.avi", avi_credentials=avi_credentials, obj_uuid=item.tenant_ref | basename, obj_type="tenant").name }}'
         http_method: "delete"
         path: '{{"virtualservice/" + item.uuid }}'
       loop: "{{ virtualserviceResults.obj.results }}"
@@ -141,6 +145,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: "*"
         http_method: get
         timeout: 300
         path: vsvip
@@ -151,6 +156,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: '{{ lookup("vmware.alb.avi", avi_credentials=avi_credentials, obj_uuid=item.tenant_ref | basename, obj_type="tenant").name }}'
         http_method: "delete"
         path: '{{"vsvip/" + item.uuid }}'
       loop: "{{ vsvipResults.obj.results }}"
@@ -162,6 +168,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: "*"
         http_method: get
         timeout: 300
         path: httppolicyset
@@ -172,6 +179,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: '{{ lookup("vmware.alb.avi", avi_credentials=avi_credentials, obj_uuid=item.tenant_ref | basename, obj_type="tenant").name }}'
         http_method: "delete"
         path: '{{"httppolicyset/" + item.uuid }}'
       loop: "{{ httppolicysetResults.obj.results }}"
@@ -183,6 +191,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: "*"
         http_method: get
         timeout: 300
         path: l4policyset
@@ -193,6 +202,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: '{{ lookup("vmware.alb.avi", avi_credentials=avi_credentials, obj_uuid=item.tenant_ref | basename, obj_type="tenant").name }}'
         http_method: "delete"
         path: '{{"l4policyset/" + item.uuid }}'
       loop: "{{ l4policysetResults.obj.results }}"
@@ -204,6 +214,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: "*"
         http_method: get
         timeout: 300
         path: vsdatascriptset
@@ -214,6 +225,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: '{{ lookup("vmware.alb.avi", avi_credentials=avi_credentials, obj_uuid=item.tenant_ref | basename, obj_type="tenant").name }}'
         http_method: "delete"
         path: '{{"vsdatascriptset/" + item.uuid }}'
       loop: "{{ vsdatascriptsetResults.obj.results }}"
@@ -225,6 +237,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: "*"
         http_method: get
         timeout: 300
         path: poolgroup
@@ -235,6 +248,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: '{{ lookup("vmware.alb.avi", avi_credentials=avi_credentials, obj_uuid=item.tenant_ref | basename, obj_type="tenant").name }}'
         http_method: "delete"
         path: '{{"poolgroup/" + item.uuid }}'
       loop: "{{ poolgroupResults.obj.results }}"
@@ -246,6 +260,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: "*"
         http_method: get
         timeout: 300
         path: pool
@@ -256,6 +271,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: '{{ lookup("vmware.alb.avi", avi_credentials=avi_credentials, obj_uuid=item.tenant_ref | basename, obj_type="tenant").name }}'
         http_method: "delete"
         path: '{{"pool/" + item.uuid }}'
       loop: "{{ poolResults.obj.results }}"
@@ -267,6 +283,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: "*"
         http_method: get
         path: serviceengine
       register: serviceengineResults
@@ -276,6 +293,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: '{{ lookup("vmware.alb.avi", avi_credentials=avi_credentials, obj_uuid=item.tenant_ref | basename, obj_type="tenant").name }}'
         http_method: "delete"
         path: '{{"serviceengine/" + item.uuid }}'
       loop: "{{ serviceengineResults.obj.results }}"
@@ -291,6 +309,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: "*"
         http_method: get
         path: serviceenginegroup
       register: serviceenginegroupResults
@@ -300,6 +319,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: '{{ lookup("vmware.alb.avi", avi_credentials=avi_credentials, obj_uuid=item.tenant_ref | basename, obj_type="tenant").name }}'
         http_method: "delete"
         path: '{{"serviceenginegroup/" + item.uuid }}'
       loop: "{{ serviceenginegroupResults.obj.results }}"
@@ -312,6 +332,7 @@
       vmware.alb.avi_api_session:
         avi_credentials: "{{ avi_credentials | default(omit) }}"
         api_context: "{{ avi_api_context | default(omit) }}"
+        tenant: '{{ lookup("vmware.alb.avi", avi_credentials=avi_credentials, obj_uuid=item.tenant_ref | basename, obj_type="tenant").name }}'
         http_method: patch
         timeout: 300
         path: '{{"serviceenginegroup/" + item.uuid }}'
